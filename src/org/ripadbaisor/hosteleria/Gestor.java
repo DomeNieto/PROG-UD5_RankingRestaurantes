@@ -136,4 +136,23 @@ public class Gestor {
 
     }
 
+    public static void eliminarRestaurante() {
+
+        if (restaurantes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay restaurantes registrados para eliminar.");
+        } else {
+            mostrarRestaurantes();
+            int indice = Validador.recibirIndice(restaurantes);
+
+            if (indice >= 0 && indice < restaurantes.size()) {
+                restaurantes.remove(indice);
+                JOptionPane.showMessageDialog(null, "Restaurante eliminado exitosamente.");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Índice de restaurante inválido.");
+            }
+        }
+
+    }
+
 }
