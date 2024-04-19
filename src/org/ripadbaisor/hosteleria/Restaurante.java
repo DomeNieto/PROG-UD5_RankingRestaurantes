@@ -17,4 +17,36 @@ public class Restaurante {
         this.puntuacion = puntuacion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getLocacion() {
+        return locacion;
+    }
+
+    public void setLocacion(String locacion) {
+        this.locacion = locacion;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public float getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(float puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
 }
