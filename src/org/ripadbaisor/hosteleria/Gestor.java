@@ -2,6 +2,8 @@ package org.ripadbaisor.hosteleria;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.ripadbaisor.util.Validador;
 
@@ -37,6 +39,28 @@ public class Gestor {
         Restaurante nuevoRestaurante = new Restaurante(nombre, locacion, horario, puntuacion);
 
         restaurantes.add(nuevoRestaurante);
+    }
+
+    public static void mostrarRestaurantes() {
+
+        if (restaurantes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay restaurantes registrados.");
+        } else {
+            Collections.sort(restaurantes, new Comparator<Restaurante>() {
+                @Override
+                public int compare(Restaurante primRestaurante, Restaurante segundoRestaurante) {
+
+                    return Float.compare(segundoRestaurante.getPuntuacion(), primRestaurante.getPuntuacion());
+                }
+            });
+
+            String mensaje = "Lista de restaurantes ordenados por puntuación:\n\n";
+            for (int i = 0; i < restaurantes.size(); i++) {
+                mensaje += (i + 1) + ". " + restaurantes.get(i).toString() + "\n";
+            }
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+
     }
 
 }
