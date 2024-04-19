@@ -17,4 +17,16 @@ public class Menu {
         return opcion;
 
     }
+
+    public static String mostrarMenuEdicion() {
+        String opcioModificar = JOptionPane.showInputDialog("""
+                    ¿Qué información desea modificar?
+                1. Nombre
+                2. Localización
+                3. Horario
+                4. Puntuación
+                        """);
+
+        return opcioModificar;
+    }
 }
