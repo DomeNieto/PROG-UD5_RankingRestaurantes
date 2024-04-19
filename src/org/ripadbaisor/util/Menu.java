@@ -3,6 +3,7 @@ package org.ripadbaisor.util;
 import javax.swing.JOptionPane;
 
 public class Menu {
+
     public static String mostrarMenuPrincipal() {
         String opcion = JOptionPane.showInputDialog("""
                        Elija una opción:
@@ -16,4 +17,17 @@ public class Menu {
         return opcion;
 
     }
+
+    public static String mostrarMenuEdicion() {
+        String opcioModificar = JOptionPane.showInputDialog("""
+                    ¿Qué información desea modificar?
+                1. Nombre
+                2. Localización
+                3. Horario
+                4. Puntuación
+                        """);
+
+        return opcioModificar;
+    }
+    
 }
