@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import java.util.Collections;
 import java.util.Comparator;
 
+import org.ripadbaisor.util.Menu;
 import org.ripadbaisor.util.Validador;
 
 public class Gestor {
@@ -59,6 +60,78 @@ public class Gestor {
                 mensaje += (i + 1) + ". " + restaurantes.get(i).toString() + "\n";
             }
             JOptionPane.showMessageDialog(null, mensaje);
+        }
+
+    }
+
+    public static void editarRestaurante() {
+
+        if (restaurantes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay restaurantes registrados para editar.");
+        } else {
+
+            mostrarRestaurantes();
+            int indice = Validador.recibirIndice(restaurantes);
+            if (indice >= 0 && indice < restaurantes.size()) {
+                Restaurante restaurante = restaurantes.get(indice);
+
+                String opcionModificar = Menu.mostrarMenuEdicion();
+
+                switch (opcionModificar) {
+                    case "1":
+                        editarAtributo(restaurante, "nombre");
+                        break;
+                    case "2":
+                        editarAtributo(restaurante, "locacion");
+                        break;
+                    case "3":
+                        editarAtributo(restaurante, "horario");
+                        break;
+                    case "4":
+                        editarAtributo(restaurante, "puntuacion");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Opción no válida.");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Índice de restaurante inválido.");
+            }
+        }
+
+    }
+
+    private static void editarAtributo(Restaurante restaurante, String atributo) {
+
+        String nuevoValor = JOptionPane.showInputDialog("Ingrese el nuevo valor para " + atributo + ":");
+
+        if (nuevoValor != null && !nuevoValor.isEmpty()) {
+            switch (atributo) {
+                case "nombre":
+                    restaurante.setNombre(nuevoValor);
+                    JOptionPane.showMessageDialog(null, "Nombre del restaurante editado exitosamente.");
+                    break;
+                case "locacion":
+                    restaurante.setLocacion(nuevoValor);
+                    JOptionPane.showMessageDialog(null, "Locación del restaurante editada exitosamente.");
+                    break;
+                case "horario":
+                    restaurante.setHorario(nuevoValor);
+                    JOptionPane.showMessageDialog(null, "Horario del restaurante editado exitosamente.");
+                    break;
+                case "puntuacion":
+                    float nuevaPuntuacion = Validador.recibirPuntuacion();
+                    restaurante.setPuntuacion(nuevaPuntuacion);
+                    JOptionPane.showMessageDialog(null, "Puntuación del restaurante editada exitosamente.");
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Atributo no válido.");
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El nuevo valor no puede estar vacío.");
         }
 
     }

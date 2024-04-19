@@ -1,6 +1,10 @@
 package org.ripadbaisor.util;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import org.ripadbaisor.hosteleria.Restaurante;
 
 public class Validador {
 
@@ -29,6 +33,25 @@ public class Validador {
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "La puntuación debe ser un número.");
+            }
+        }
+
+    }
+
+    public static int recibirIndice(ArrayList<Restaurante> restaurantes) {
+
+        while (true) {
+            try {
+                String numeroRestaurante = JOptionPane.showInputDialog("Ingrese el número del restaurante:");
+                int indice = Integer.parseInt(numeroRestaurante) - 1;
+                if (indice >= 0 && indice < restaurantes.size()) {
+                    return indice;
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Número de restaurante inválido. Debe ser entre 1 y " + restaurantes.size());
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El número debe ser un número entero.");
             }
         }
 
